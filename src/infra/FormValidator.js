@@ -5,24 +5,23 @@ export class FormValidator {
     this._validationContract = new ValidationContract()
 
     this._$formElement = $formElement
+    this.setupFormElement()
 
     this._formFieldNames = formFieldNames
     this.setupAllFormFieldElements()
-
-    $formElement.validator = this
-    $formElement.addEventListener('change', this.validateFormFieldElement)
-    $formElement.addEventListener('input', this.validateFormFieldElement)
   }
 
-  get valid () {
-    return !this.invalid
+  isValid = () => {
+    console.log('a')
+    return !this.isInvalid()
   }
 
-  get invalid () {
+  isInvalid = () => {
     this.validateAllFormFieldElements()
     return this._validationContract.hasErrors()
   }
 
+  // [REFATORAR]
   setupAllFormFieldElements = () => {
     const formFieldElements = []
     for(const fieldName in this._formFieldNames) {
@@ -52,6 +51,15 @@ export class FormValidator {
     this._formFieldElements = formFieldElements
   }
 
+  setupFormElement = () => {
+    this._$formElement.validator = {
+      isValid: this.isValid,
+      isInvalid: this.isInvalid
+    }
+    this._$formElement.addEventListener('change', this.validateFormFieldElement)
+    this._$formElement.addEventListener('input', this.validateFormFieldElement)
+  }
+
   validateFormFieldElement = ({ target: formFieldElement }) => {
     formFieldElement.validate()
   }
@@ -64,3 +72,10 @@ export class FormValidator {
 
 }
 
+class FormFieldValidator {
+  validate() {
+
+  }
+
+  isValid
+}

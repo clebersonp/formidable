@@ -5,6 +5,10 @@ export class ValidationContract {
     return new Validations({ contract: this, param, value })
   }
 
+  get errors() {
+    return this._errors
+  }
+
   hasErrors = () => {
     let contractIsInvalid = false
     this._errors.forEach((param) => {
@@ -36,9 +40,6 @@ export class ValidationContract {
     }
   }
 
-  get errors() {
-    return this._errors
-  }
 
   getErrorsByParam(param) {
     return this._errors.get(param)

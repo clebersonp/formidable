@@ -8,7 +8,8 @@ export class UserController {
     event.preventDefault()
     const $form = event.target
 
-    console.log('$form.valid',$form.validator.valid)
+    console.log('$form.invalid', $form.validator.isInvalid())
+    if($form.validator.isInvalid()) return;
 
     // const formElementsDTO = {
     //   fullName: $form.querySelector('[data-element="inputNome"]').value,
@@ -33,3 +34,4 @@ export class UserController {
     })
   }
 }
+

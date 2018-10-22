@@ -15,7 +15,7 @@ export class User {
 
   get email() { return this._email }
 
-  get cpf() { return this._cpf.cpf }
+  get cpf() { return this._cpf.value }
   get cpfFormated() { return this._cpf.formated }
 
   get phone() { return this._phone.number }
