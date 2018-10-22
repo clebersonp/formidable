@@ -1,6 +1,6 @@
 ====
 
-- Testar as coisas mais gerais do sistema
+<!-- - Testar as coisas mais gerais do sistema
 - Criar um HttpService
 - ....
-- criar o css
+- criar o css -->

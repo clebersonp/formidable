@@ -1,6 +1,8 @@
 import { ValidationContract } from './FluentValidator'
 
 export class FormValidator {
+  _formFieldElements = []
+
   constructor($formElement, formFieldNames) {
     this._validationContract = new ValidationContract()
 
@@ -12,7 +14,6 @@ export class FormValidator {
   }
 
   isValid = () => {
-    console.log('a')
     return !this.isInvalid()
   }
 
@@ -21,34 +22,17 @@ export class FormValidator {
     return this._validationContract.hasErrors()
   }
 
-  // [REFATORAR]
   setupAllFormFieldElements = () => {
-    const formFieldElements = []
-    for(const fieldName in this._formFieldNames) {
+    for (const fieldName in this._formFieldNames) {
       const $formFieldElement = this._$formElement.querySelector(`[name="${fieldName}"]`)
-
-      $formFieldElement.insertAdjacentHTML('afterend', `<span class="errors"></span>`)
-
-      const $formFieldErrorsElement = $formFieldElement.nextElementSibling
-
-      $formFieldElement.validate = () => {
-        this._formFieldNames[fieldName]($formFieldElement.value, this._validationContract)
-        // console.log('Erros deste campo:', this._validationContract.getErrorsByParam(fieldName))
-        console.log(this._validationContract.isValidParam(fieldName))
-        if(!this._validationContract.isValidParam(fieldName)) {
-          $formFieldElement.classList.add('-invalid')
-        } else {
-          $formFieldElement.classList.remove('-invalid')
-        }
-
-        $formFieldErrorsElement.innerHTML = `${
-          Array.from(this._validationContract.getErrorsByParam(fieldName).values()).map((error) => error.message)
-        }`
-      }
-
-      formFieldElements.push($formFieldElement)
+      const formFieldValidator = new FormFieldValidator({
+        formFieldElement: $formFieldElement,
+        formFieldName: fieldName,
+        validationContract: this._validationContract,
+        fieldValidation: this._formFieldNames[fieldName]
+      })
+      this._formFieldElements.push(formFieldValidator)
     }
-    this._formFieldElements = formFieldElements
   }
 
   setupFormElement = () => {
@@ -61,7 +45,7 @@ export class FormValidator {
   }
 
   validateFormFieldElement = ({ target: formFieldElement }) => {
-    formFieldElement.validate()
+    formFieldElement.validator.validate()
   }
 
   validateAllFormFieldElements = () => {
@@ -73,9 +57,65 @@ export class FormValidator {
 }
 
 class FormFieldValidator {
-  validate() {
+  initialized = false
+  constructor({ formFieldElement, formFieldName, validationContract, fieldValidation }) {
+    this._formFieldElement = formFieldElement
+    this._formFieldName = formFieldName
+    this._validationContract = validationContract
+    this._fieldValidation = fieldValidation
 
+    this.init()
   }
 
-  isValid
+  init() {
+    this.setupFormElement()
+    this.validate()
+    this.initialized = true
+  }
+
+  validate = () => {
+    this.validation()
+    this.updateCSSClassStatus()
+    this.updateErrors()
+  }
+
+  validation = () => {
+    this._fieldValidation(this._formFieldElement.value, this._validationContract)
+  }
+
+  updateCSSClassStatus() {
+    if (this.isInvalid()) {
+      this._formFieldElement.classList.add('-invalid')
+    } else {
+      this._formFieldElement.classList.remove('-invalid')
+    }
+  }
+
+  updateErrors = () => {
+    if(this.initialized) {
+      this._formElementErrorElement.innerHTML = `${
+        Array.from(this._validationContract.getErrorsByParam(this._formFieldName).values()).map((error) => error.message)
+      }`
+    }
+  }
+
+  isValid = () => {
+    return this._validationContract.isValidParam(this._formFieldName)
+  }
+
+  isInvalid = () => {
+    return !this.isValid()
+  }
+
+  setupFormElement = () => {
+    this._formFieldElement.validator = {
+      validate: this.validate
+    }
+    this.setupFormElementErrorElement()
+  }
+
+  setupFormElementErrorElement = () => {
+    this._formFieldElement.insertAdjacentHTML('afterend', `<span class="errors"></span>`)
+    this._formElementErrorElement = this._formFieldElement.parentNode.querySelector('.errors')
+  }
 }
