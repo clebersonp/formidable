@@ -1,0 +1,16 @@
+/*
+# Tools
+- It's the place that you will write your mixins and functions needed to build your layouts.
+- Could be anything, since font-face mixins, until animations and etc...
+- Nothing here will genereta final CSS too.
+*/
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@keyframes rotate {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}

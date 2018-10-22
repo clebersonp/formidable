@@ -1,0 +1,45 @@
+.btn-generic {
+  width: 100%;
+  padding: 15px;
+  border-radius: 200px;
+  border: 0;
+  color: $white;
+  transition: opacity .3s, color .3s;
+  position: relative;
+  cursor: pointer;
+  &.-green {
+    background-color: $green-default;
+  }
+  &.-loading {
+    text-indent: 9999px;
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      margin: auto;
+      @include square(15px);
+      border: 2px solid transparent;
+      border-left-color: currentColor;
+      border-top-color: currentColor;
+      border-radius: 50%;
+      animation-name: rotate;
+      animation-duration: .5s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+  }
+  &:focus,
+  &:hover {
+    opacity: .7;
+  }
+  &:disabled {
+    color: #dddcdc;
+    background-color: #f6f6f6;
+    cursor: not-allowed;
+  }
+}
+

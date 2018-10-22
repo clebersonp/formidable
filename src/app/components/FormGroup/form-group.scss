@@ -1,0 +1,21 @@
+.form-group {
+  width: 100%;
+  display: block;
+  position: relative;
+  margin-bottom: 15px;
+  & > .label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: transform .3s;
+    pointer-events: none;
+  }
+  & > .input {
+    outline: 0;
+    width: 100%;
+    border: none;
+    &:focus ~ .label {
+      transform: translateY(-100%);
+    }
+  }
+}
