@@ -21,8 +21,7 @@
   "nyc": {
     "reporter": [
       "text",
-      "html",
-      "text-lcov"
+      "html"
     ],
     "excludes": [
       "tests/**"
