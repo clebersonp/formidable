@@ -1,21 +1,55 @@
+$label-topDistance: 5px;
+
 .form-group {
   width: 100%;
   display: block;
   position: relative;
-  margin-bottom: 15px;
+  margin: 3rem 0;
+  font-size: 1.4rem;
   & > .label {
+    color: #333333;
     position: absolute;
     left: 0;
-    top: 0;
-    transition: transform .3s;
+    top: $label-topDistance;
+    transition: transform .2s, color .2s;
     pointer-events: none;
   }
   & > .input {
+    display: block;
+    font-size: inherit;
     outline: 0;
     width: 100%;
     border: none;
+    color: #efeeed;
+    border-bottom: 1px solid #efeeed;
+    padding: $label-topDistance 0;
+    transition: color .2s;
+
+    &:focus {
+      color: #333333;
+    }
+
+    &.-invalid {
+      color: #eb4a46;
+      border-color: currentColor;
+    }
+    &.-invalid ~ .errors {
+      color: #eb4a46;
+      opacity: 1;
+    }
+
+    &.-typed ~ .label,
     &:focus ~ .label {
       transform: translateY(-100%);
     }
+  }
+
+  & > .errors {
+    opacity: 0;
+    display: block;
+    width: 100%;
+    position: absolute;
+    font-size: 1.2rem;
+    transition: opacity .2s;
   }
 }

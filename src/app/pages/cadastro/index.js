@@ -1,13 +1,10 @@
 import { UserController } from '../../controllers/UserControler'
-import { FormValidator } from '../../../infra/FormValidator'
-import { newUserValidationSchema } from '../../validations/newUserValidationSchema';
+import formAddUsuario from './components/formAddUsuario'
+
+formAddUsuario.init()
 
 window.pageCadastro = {
-  userController: new UserController(),
-  formAddUsuario: new FormValidator(
-    document.querySelector('[data-element="formAddUsuario"]'),
-    newUserValidationSchema
-  )
+  userController: new UserController()
 }
 
 

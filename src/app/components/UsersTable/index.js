@@ -1,4 +1,4 @@
-import { Component } from '../../../infra/Component'
+import Component from '../../../infra/Component'
 import "./UsersTable.scss"
 
 export class UsersTable extends Component {
@@ -9,11 +9,11 @@ export class UsersTable extends Component {
 
   constructor(element) {
     super()
-    this._element = element
+    this._baseElement = element
   }
 
   render() {
-    this._element.innerHTML = this._template()
+    this._baseElement.innerHTML = this._template()
   }
 
   _template = () => {

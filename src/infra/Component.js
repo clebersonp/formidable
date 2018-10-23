@@ -1,11 +1,11 @@
-export class Component {
+export default class Component {
   setState = (newState) => {
     requestAnimationFrame(() => {
       this.state = {
         ...this.state,
-        ...newState
-      }
-      this.render()
-    })
+        ...newState,
+      };
+      this.render();
+    });
   }
 }
