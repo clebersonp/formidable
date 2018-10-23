@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "cross-env NODE_ENV='test' mocha './tests/**/*.test.js' --require @babel/register --recursive",
-    "test:coverage": "nyc npm test | coveralls",
+    "test:coverage": "nyc npm test",
+    "test:coveralls": "test:coverage && nyc report --reporter=text-lcov | coveralls",
     "dev": "cross-env NODE_ENV=development webpack --config ./devtools/webpack/webpack.config.js --colors --progress  --mode='development'",
     "build": "echo 'You must to create an build command'",
     "start": "echo 'You must to create an start command'",
