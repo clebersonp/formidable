@@ -11,7 +11,7 @@ export default class User {
     this.fullName = fullName;
     this.cpf = new CPF({ CPFNumbers: cpf });
     this.phone = new Phone({ number: phone });
-    this.email = email;
+    this.email = email.toLowerCase();
 
     Object.freeze(this);
   }

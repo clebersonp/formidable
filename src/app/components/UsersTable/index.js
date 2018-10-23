@@ -29,9 +29,9 @@ export default class UsersTable extends Component {
           ${this.state.users.map(user => `
               <tr>
                 <td>${user.fullName}</td>
-                <td>${user.cpfFormated}</td>
+                <td>${user.getCPFFormated()}</td>
                 <td>${user.email}</td>
-                <td>${user.phoneFormated}</td>
+                <td>${user.getPhoneFormated()}</td>
               </tr>
             `).join('')}
         </tbody>

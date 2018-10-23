@@ -20,14 +20,12 @@ export default class UsersRepository {
     });
 
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        try {
-          this.setItemInLocalStorage(listOfUsers);
-          resolve({ message: 'User registered with success' });
-        } catch (err) {
-          reject(err);
-        }
-      }, 1000);
+      try {
+        this.setItemInLocalStorage(listOfUsers);
+        resolve({ message: 'User registered with success' });
+      } catch (err) {
+        reject(err);
+      }
     });
   }
 }

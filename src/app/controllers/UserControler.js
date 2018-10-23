@@ -1,4 +1,5 @@
 import UsersService from '../../domain/services/UsersService';
+import UsersTable from '../components/UsersTable';
 
 export default class UserController {
   static add(event) {
@@ -25,12 +26,15 @@ export default class UserController {
       });
   }
 
-  // showAll(event) {
-  // import { UsersTable } from '../components/UsersTable'
-  //   // const usersTable = new UsersTable(document.querySelector('[data-template="UsersTable"]'))
-  //   // const users = new UsersRepository().getAll()
-  //   // usersTable.setState({
-  //   //   users
-  //   // })
-  // }
+  static showAll() {
+    const usersTable = new UsersTable(window.document.querySelector('[data-template="UsersTable"]'));
+
+    UsersService
+      .getAll()
+      .then((users) => {
+        usersTable.setState({
+          users,
+        });
+      });
+  }
 }
