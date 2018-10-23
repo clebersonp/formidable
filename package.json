@@ -10,7 +10,7 @@
     "build": "echo 'You must to create an build command'",
     "start": "echo 'You must to create an start command'",
     "lint": "eslint ./src --ext .js",
-    "lint-file": "eslint ./src/infra/FluentValidator/Validations.js"
+    "lint-file": "eslint ./src/infra/FormValidator/FormFieldValidator.js"
   },
   "keywords": [],
   "author": "",

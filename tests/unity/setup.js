@@ -1,5 +1,5 @@
 import { expect } from 'chai'
 
-export {
+export default {
   expect
-}
+};

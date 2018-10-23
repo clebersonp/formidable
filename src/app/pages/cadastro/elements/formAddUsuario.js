@@ -1,4 +1,4 @@
-import { FormValidator } from '../../../../infra/FormValidator'
+import FormValidator  from '../../../../infra/FormValidator'
 import { newUserValidationSchema } from '../../../validations/newUserValidationSchema';
 
 const $formElement = document.querySelector('[data-element="formAddUsuario"]')
