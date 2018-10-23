@@ -27,10 +27,30 @@ export default class UserController {
   }
 
   static showAll() {
-    const usersTable = new UsersTable(window.document.querySelector('[data-template="UsersTable"]'));
+    const usersTable = new UsersTable(window.document.querySelector('[data-template="UsersTable"]'), UserController);
 
     UsersService
-      .getAll()
+      .getAllWithInitialData()
+      .then((users) => {
+        usersTable.setState({
+          users,
+        });
+      });
+  }
+
+  static remove(user) {
+    const usersTable = new UsersTable(window.document.querySelector('[data-template="UsersTable"]'), UserController);
+
+    const removableUserDTO = {
+      fullName: user.nome,
+      cpf: user.cpf,
+      phone: user.telefone,
+      email: user.email,
+    };
+
+    UsersService
+      .deleteUser(removableUserDTO)
+      .then(UsersService.getAll)
       .then((users) => {
         usersTable.setState({
           users,

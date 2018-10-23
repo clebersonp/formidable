@@ -1,4 +1,4 @@
-// import { User } from "../entities/User";
+import deepEqual from '../deepEqual';
 
 export default class UsersRepository {
   key = 'users'
@@ -11,13 +11,14 @@ export default class UsersRepository {
 
   insert = (user) => {
     const listOfUsers = this.getAll();
-
-    listOfUsers.push({
-      name: user.getFullName(),
-      cpf: user.getCPF(),
-      phone: user.getPhone(),
-      email: user.getEmail(),
-    });
+    if (user.getFullName) {
+      listOfUsers.push({
+        name: user.getFullName(),
+        cpf: user.getCPF(),
+        phone: user.getPhone(),
+        email: user.getEmail(),
+      });
+    }
 
     return new Promise((resolve, reject) => {
       try {
@@ -27,5 +28,19 @@ export default class UsersRepository {
         reject(err);
       }
     });
+  }
+
+  remove = (removableUser) => {
+    const removableUserDbObj = {
+      name: removableUser.getFullName(),
+      cpf: removableUser.getCPF(),
+      phone: removableUser.getPhone(),
+      email: removableUser.getEmail(),
+    };
+    const listOfUsers = this.getAll();
+    const updatedListOfUsers = listOfUsers
+      .filter(currentUser => !deepEqual(currentUser, removableUserDbObj));
+
+    this.setItemInLocalStorage(updatedListOfUsers);
   }
 }

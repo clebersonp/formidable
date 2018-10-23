@@ -1,6 +1,6 @@
 export default class Phone {
   constructor({ number }) {
-    this.number = number;
+    this.number = number.replace(/-/g, '');
     Object.freeze(this);
   }
 

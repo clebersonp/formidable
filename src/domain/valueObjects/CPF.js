@@ -1,6 +1,6 @@
 export default class CPF {
   constructor({ CPFNumbers }) {
-    this.CPFNumbers = CPFNumbers;
+    this.CPFNumbers = CPFNumbers.replace(/-/g, '').replace(/\./g, '');
 
     Object.freeze(this);
   }
