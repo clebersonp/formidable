@@ -1,6 +1,6 @@
 ![Logo of the project](http://placehold.it/120x120)
 
-# Formidable &middot; [![CircleCI](https://circleci.com/gh/omariosouto/cmail-back/tree/master.svg?style=shield)](https://circleci.com/gh/omariosouto/cmail-back/tree/master) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shield)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=shield)](https://github.com/omariosouto/formidable/blob/master/LICENSE)
+# Formidable &middot; [![CircleCI](https://circleci.com/gh/omariosouto/cmail-back/tree/master.svg?style=shield)](https://circleci.com/gh/omariosouto/cmail-back/tree/master) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shield)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=shield)](https://github.com/omariosouto/formidable/blob/master/LICENSE) [![Coverage Status](https://coveralls.io/repos/github/omariosouto/formidable/badge.svg?branch=master)](https://coveralls.io/github/omariosouto/formidable?branch=master)
 
 > Additional information or tag line
 
