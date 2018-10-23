@@ -17,14 +17,12 @@ export default class UserController {
       email: $form.querySelector('[data-element="inputEmail"]').value,
     };
 
-    const usersService = new UsersService()
-
-    usersService
+    UsersService
       .addNew(formElementsDTO)
       .then(() => {
-        $form.dispatchEvent(new Event('btnsubmitloaded'))
-        window.location.href = '/'
-      })
+        $form.dispatchEvent(new Event('btnsubmitloaded'));
+        window.location.href = '/';
+      });
   }
 
   // showAll(event) {

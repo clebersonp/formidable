@@ -7,9 +7,7 @@ export default class UsersRepository {
 
   setItemInLocalStorage = item => localStorage.setItem(this.key, JSON.stringify(item))
 
-  getAll = () => {
-    return this.getItemFromLocalStorage()
-  }
+  getAll = () => this.getItemFromLocalStorage()
 
   insert = (user) => {
     const listOfUsers = this.getAll();
@@ -25,11 +23,11 @@ export default class UsersRepository {
       setTimeout(() => {
         try {
           this.setItemInLocalStorage(listOfUsers);
-          resolve({ message: 'User registered with success' })
+          resolve({ message: 'User registered with success' });
         } catch (err) {
-          reject(err)
+          reject(err);
         }
-      }, 1000)
-    })
+      }, 1000);
+    });
   }
 }
