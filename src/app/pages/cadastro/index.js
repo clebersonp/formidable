@@ -1,8 +1,6 @@
 import UserController from '../../controllers/UserControler';
-import formAddUsuario from './elements/formAddUsuario';
-
-formAddUsuario.init();
+import './elements/formAddUsuario';
 
 window.pageCadastro = {
-  userController: new UserController(),
+  userController: UserController,
 };

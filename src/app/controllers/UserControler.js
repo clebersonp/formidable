@@ -1,13 +1,14 @@
-import User from '../../domain/entities/User';
-import UsersRepository from '../../domain/repositories/UsersRepository';
-// import { UsersTable } from '../components/UsersTable'
+import UsersService from '../../domain/services/UsersService';
 
 export default class UserController {
   static add(event) {
     event.preventDefault();
     const $form = event.target;
 
+
     if ($form.validator.isInvalid()) return;
+
+    $form.dispatchEvent(new Event('btnsubmitloading'));
 
     const formElementsDTO = {
       fullName: $form.querySelector('[data-element="inputNome"]').value,
@@ -16,16 +17,18 @@ export default class UserController {
       email: $form.querySelector('[data-element="inputEmail"]').value,
     };
 
-    $form.dispatchEvent(new Event('btnsubmitloading'));
-    setTimeout(() => $form.dispatchEvent(new Event('btnsubmitloaded')), 2000);
+    const usersService = new UsersService()
 
-    const user = new User(formElementsDTO);
-
-    const usersRepository = new UsersRepository();
-    usersRepository.add(user);
+    usersService
+      .addNew(formElementsDTO)
+      .then(() => {
+        $form.dispatchEvent(new Event('btnsubmitloaded'))
+        window.location.href = '/'
+      })
   }
 
   // showAll(event) {
+  // import { UsersTable } from '../components/UsersTable'
   //   // const usersTable = new UsersTable(document.querySelector('[data-template="UsersTable"]'))
   //   // const users = new UsersRepository().getAll()
   //   // usersTable.setState({

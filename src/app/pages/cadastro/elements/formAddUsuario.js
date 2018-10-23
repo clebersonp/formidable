@@ -14,12 +14,11 @@ function stopBtnSubmitLoading() {
   $formElement.reset();
 }
 
+$formElement.addEventListener('btnsubmitloading', startBtnSubmitLoading);
+$formElement.addEventListener('btnsubmitloaded', stopBtnSubmitLoading);
+
 
 export default {
   element: $formElement,
   formValidator: new FormValidator($formElement, newUserValidationSchema),
-  init: () => {
-    $formElement.addEventListener('btnsubmitloading', startBtnSubmitLoading);
-    $formElement.addEventListener('btnsubmitloaded', stopBtnSubmitLoading);
-  },
 };
