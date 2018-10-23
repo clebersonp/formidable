@@ -1,5 +1,5 @@
 import { expect } from '../setup'
-import { ValidationContract } from '../../../src/infra/FluentValidator.js'
+import ValidationContract from '../../../src/infra/FluentValidator'
 
 let contract = new ValidationContract()
 describe('Fluent Validator', () => {
