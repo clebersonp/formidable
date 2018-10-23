@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "test": "cross-env NODE_ENV='test' mocha './tests/**/*.test.js' --require @babel/register --recursive",
-    "test:coverage": "nyc npm test",
+    "test:coverage": "nyc npm test | coveralls",
     "dev": "cross-env NODE_ENV=development webpack --config ./devtools/webpack/webpack.config.js --colors --progress  --mode='development'",
     "build": "echo 'You must to create an build command'",
     "start": "echo 'You must to create an start command'",
@@ -18,8 +18,14 @@
     }
   },
   "nyc": {
-    "reporter": ["text", "html"],
-    "excludes": ["tests/**"]
+    "reporter": [
+      "text",
+      "html",
+      "text-lcov"
+    ],
+    "excludes": [
+      "tests/**"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -50,9 +56,8 @@
     "sass-loader": "^7.1.0",
     "webpack": "^4.21.0",
     "webpack-cli": "^3.1.2",
-    "webpack-dashboard": "^2.0.0"
-  },
-  "dependencies": {
+    "webpack-dashboard": "^2.0.0",
     "husky": "^1.1.2"
-  }
+  },
+  "dependencies": {}
 }
