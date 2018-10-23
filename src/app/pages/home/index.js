@@ -1,7 +1,5 @@
-import { UserController } from '../../controllers/UserControler'
+import UserController from '../../controllers/UserControler';
 
 window.pageHome = {
-  userController: new UserController(this)
-}
-
-
+  userController: new UserController(this),
+};

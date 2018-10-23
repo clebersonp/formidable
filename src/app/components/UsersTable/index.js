@@ -1,23 +1,21 @@
-import Component from '../../../infra/Component'
-import "./UsersTable.scss"
+import Component from '../../../infra/Component';
+import './UsersTable.scss';
 
-export class UsersTable extends Component {
-
+export default class UsersTable extends Component {
   state = {
-    users: []
+    users: [],
   }
 
   constructor(element) {
-    super()
-    this._baseElement = element
+    super();
+    this.baseElement = element;
   }
 
   render() {
-    this._baseElement.innerHTML = this._template()
+    this.baseElement.innerHTML = this.template();
   }
 
-  _template = () => {
-    return `
+  template = () => `
       <table>
         <thead>
           <tr>
@@ -28,18 +26,15 @@ export class UsersTable extends Component {
           </tr>
         </thead>
         <tbody>
-          ${this.state.users.map((user) => {
-            return `
+          ${this.state.users.map(user => `
               <tr>
                 <td>${user.fullName}</td>
                 <td>${user.cpfFormated}</td>
                 <td>${user.email}</td>
                 <td>${user.phoneFormated}</td>
               </tr>
-            `
-          }).join('')}
+            `).join('')}
         </tbody>
       </table>
     `
-  }
 }

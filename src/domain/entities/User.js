@@ -1,25 +1,30 @@
-import { Phone } from "../valueObjects/Phone";
-import { CPF } from "../valueObjects/CPF";
+import Phone from '../valueObjects/Phone';
+import CPF from '../valueObjects/CPF';
 
-export class User {
-  constructor({ fullName, cpf, phone, email }) {
-    this._fullName = fullName
-    this._cpf = new CPF({ cpf })
-    this._phone = new Phone({ number: phone })
-    this._email = email
+export default class User {
+  constructor({
+    fullName,
+    cpf,
+    phone,
+    email,
+  }) {
+    this.fullName = fullName;
+    this.cpf = new CPF({ CPFNumbers: cpf });
+    this.phone = new Phone({ number: phone });
+    this.email = email;
 
-    Object.freeze(this)
+    Object.freeze(this);
   }
 
-  get fullName() { return this._fullName }
+  getFullName = () => this.fullName
 
-  get email() { return this._email }
+  getEmail = () => this.email
 
-  get cpf() { return this._cpf.value }
-  get cpfFormated() { return this._cpf.formated }
+  getCPF = () => this.cpf.getValue()
 
-  get phone() { return this._phone.number }
-  get phoneFormated() { return this._phone.formated }
+  getCPFFormated = () => this.cpf.getValueFormated()
+
+  getPhone = () => this.phone.getNumber()
+
+  getPhoneFormated = () => this.phone.getNumberFormated()
 }
-
-

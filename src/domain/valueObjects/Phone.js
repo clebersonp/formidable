@@ -1,18 +1,14 @@
-export class Phone {
+export default class Phone {
   constructor({ number }) {
-    this._number = number
-    Object.freeze(this)
+    this.number = number;
+    Object.freeze(this);
   }
 
-  get number() {
-    return this._number
-  }
+  getNumber = () => this.number;
 
-  get formated() {
-    return this._number.replace(/(\d{2})?(\d{4})(\d{4})/, (fullMatch, ddd, numberPartOne, numberPartTwo) => {
-      if(ddd) return `${ddd}-${numberPartOne}-${numberPartTwo}`
+  getNumberFormated = () => this.number.replace(/(\d{2})?(\d{4})(\d{4})/, (fullMatch, ddd, numberPartOne, numberPartTwo) => {
+    if (ddd) return `${ddd}-${numberPartOne}-${numberPartTwo}`;
 
-      return `${numberPartOne}-${numberPartTwo}`
-    })
-  }
+    return `${numberPartOne}-${numberPartTwo}`;
+  })
 }

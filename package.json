@@ -12,6 +12,11 @@
     "lint": "eslint ./src --ext .js",
     "lint-file": "eslint ./src/infra/FormValidator/FormFieldValidator.js"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -43,5 +48,7 @@
     "webpack-cli": "^3.1.2",
     "webpack-dashboard": "^2.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "husky": "^1.1.2"
+  }
 }
