@@ -61,8 +61,7 @@ export default class Validations {
   }
 
   hasMinLength = (minLength, message = `Minimal lenght is ${minLength}`) => {
-    const condition = this.value.length < minLength;
-
+    const condition = !(this.value.length >= minLength);
     this.applyValidation(condition, 'hasMinLength', message);
 
     return this;

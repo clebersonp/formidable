@@ -13,13 +13,19 @@ export default class ValidationContract {
   }
 
   hasErrors = () => {
-    let contractIsInvalid = false;
-    this.errors.forEach((param) => {
-      if (param.size === 1) {
-        contractIsInvalid = true;
-      }
-    });
-    return contractIsInvalid;
+    const listOfValidationErrors = Array.from(this.errors.values());
+    const firstValidationErrorHasErrors = listOfValidationErrors[0].size > 0;
+
+    const isValidContract = listOfValidationErrors.reduce((acc, currentError) => {
+      const hasCurrentValidationErrorErrors = currentError.size > 0;
+      const previousOrCurrentHasErrors = acc || hasCurrentValidationErrorErrors;
+
+      if (previousOrCurrentHasErrors) return true;
+
+      return acc;
+    }, firstValidationErrorHasErrors);
+
+    return isValidContract;
   }
 
   setParam(param) {

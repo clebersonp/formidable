@@ -54,7 +54,7 @@ export default class FormFieldValidator {
       const errorsOfThisParam = this.validationContract.getErrorsByParam(this.formFieldName);
       const errors = Array.from(errorsOfThisParam.values()) || [];
       const firstError = errors[0] || {};
-      this.formElementErrorElement.innerHTML = `${firstError.message}`;
+      this.formElementErrorElement.innerHTML = firstError.message || '';
     }
   }
 

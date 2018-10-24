@@ -6,7 +6,6 @@ export default class UserController {
     event.preventDefault();
     const $form = event.target;
 
-
     if ($form.validator.isInvalid()) return;
 
     $form.dispatchEvent(new Event('btnsubmitloading'));
