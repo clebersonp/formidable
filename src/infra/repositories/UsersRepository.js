@@ -11,23 +11,20 @@ export default class UsersRepository {
 
   insert = (user) => {
     const listOfUsers = this.getAll();
+    let createdUser;
+
     if (user.getFullName) {
-      listOfUsers.push({
+      createdUser = {
         name: user.getFullName(),
         cpf: user.getCPF(),
         phone: user.getPhone(),
         email: user.getEmail(),
-      });
+      };
+      listOfUsers.push(createdUser);
     }
 
-    return new Promise((resolve, reject) => {
-      try {
-        this.setItemInLocalStorage(listOfUsers);
-        resolve({ message: 'User registered with success' });
-      } catch (err) {
-        reject(err);
-      }
-    });
+    this.setItemInLocalStorage(listOfUsers);
+    return createdUser;
   }
 
   remove = (removableUser) => {

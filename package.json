@@ -60,5 +60,7 @@
     "webpack-cli": "^3.1.2",
     "webpack-dashboard": "^2.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "localStorage": "^1.0.4"
+  }
 }
