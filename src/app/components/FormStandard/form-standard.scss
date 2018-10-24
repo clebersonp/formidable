@@ -1,0 +1,7 @@
+.form-standard {
+  & > .submit {
+    max-width: 70%;
+    margin: 0 auto;
+    display: block;
+  }
+}

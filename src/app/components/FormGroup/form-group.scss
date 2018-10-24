@@ -30,11 +30,11 @@ $label-topDistance: 5px;
     }
 
     &.-invalid {
-      color: #eb4a46;
+      color: $invalid;
       border-color: currentColor;
     }
     &.-invalid ~ .errors {
-      color: #eb4a46;
+      color: $invalid;
       opacity: 1;
     }
 

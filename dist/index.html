@@ -7,10 +7,11 @@
     <title>Document</title>
 <link href="home.min.css" rel="stylesheet"></head>
 <body onload="pageHome.userController.showAll(event)">
-    <h1>Listagem</h1>
-    <!-- CRuD -->
-    <div data-template="UsersTable">Carregando...</div>
+    <main class="container">
+      <h1 class="page-title">Listagem</h1>
 
-    <a href="/cadastro">Cadastro</a>
+      <div data-template="UsersTable"><div class="spinner">Carregando...</div></div>
+      <a class="fab btn-generic -purple" href="/cadastro">Ir para o Cadastro</a>
+    </main>
 <script type="text/javascript" src="js/home/bundle.js"></script></body>
 </html>

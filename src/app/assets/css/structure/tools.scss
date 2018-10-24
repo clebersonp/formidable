@@ -10,7 +10,32 @@
   height: $size;
 }
 
+@mixin spinner($size, $borderSize) {
+  position: relative;
+  text-indent: 9999px;
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    @include square($size);
+    border: $borderSize solid transparent;
+    border-left-color: currentColor;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation-name: rotate;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+}
+
 @keyframes rotate {
   from {transform: rotate(0deg);}
   to {transform: rotate(360deg);}
 }
+

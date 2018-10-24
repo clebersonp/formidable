@@ -12,6 +12,11 @@ $font-stack: sans-serif;
 // ## Colors
 $white: #ffffff;
 $green-default: #00c8b3;
+$red-default: #eb4a46;
+$purple-default:#e6258c;
 
-
+// ## Common Variables
+$invalid: $red-default;
+$commonPadding: 1.5rem;
+$unfocus: #efeeed;
 

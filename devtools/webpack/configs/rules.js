@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const sassImporter = require("node-sass-importer")
 
 module.exports = [
     {
@@ -13,12 +14,12 @@ module.exports = [
         use: ExtractTextPlugin.extract({
             use: [
                 {
-                    loader: 'css-loader',
+                    loader: 'css-loader?-minimize',
                     options: { sourceMap: true }
                 },
                 {
                     loader: 'sass-loader',
-                    options: { sourceMap: true }
+                    options: { sourceMap: true,  }
                 }
             ]
         }),

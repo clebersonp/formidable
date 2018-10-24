@@ -4,3 +4,20 @@
 - Here we will leave styles for headings (h1-h6), blockquotes, a, buttons, etc.
 - just BASIC styles.
 */
+h1 {
+  font-size: 3rem;
+}
+
+
+table {
+  width: 100%;
+  @media screen and (max-width: 600px) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+td {
+  padding: $commonPadding;
+}

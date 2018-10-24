@@ -1,5 +1,4 @@
 import Component from '../../../infra/Component';
-import './UsersTable.scss';
 
 export default class UsersTable extends Component {
   state = {
@@ -36,7 +35,7 @@ export default class UsersTable extends Component {
   }
 
   template = () => `
-      <table>
+      <table class="users-table -striped">
         <thead>
           <tr>
             <td>Nome</td>
@@ -53,7 +52,7 @@ export default class UsersTable extends Component {
                 <td data-type="cpf">${user.getCPFFormated()}</td>
                 <td data-type="email">${user.getEmail()}</td>
                 <td data-type="telefone">${user.getPhoneFormated()}</td>
-                <td><button class="btn-remove">Remover</button></td>
+                <td><button class="btn-remove btn-generic -red -small">Remover</button></td>
               </tr>
             `).join('')
           }
