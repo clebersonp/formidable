@@ -11,7 +11,7 @@ const userObj = {
   phone: '0012345678'
 }
 
-describe('domain/valueObjects/CPF', () => {
+describe('domain/entities/User', () => {
   it('should create an user instance', () => {
     const user = new User(userObj)
     expect(user).to.be.an.instanceOf(User)
