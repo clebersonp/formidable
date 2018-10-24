@@ -3,6 +3,7 @@ import sinon from 'sinon';
 
 import User from '../../../../src/domain/entities/User'
 import UsersService from '../../../../src/domain/services/UsersService'
+import { EXTERNAL_SERVICE_URL } from '../../../../src/domain/services/configs'
 import UsersRepository from '../../../../src/infra/repositories/UsersRepository'
 
 
@@ -24,7 +25,7 @@ describe('/domain/services/UsersService', () => {
     usersRepositoryStubs.getAll = sinon.stub(UsersRepository.prototype, 'getAll').callsFake(() => [])
     usersRepositoryStubs.remove = sinon.stub(UsersRepository.prototype, 'remove')
 
-    fetchStub = sinon.stub(global, 'fetch').resolves({ json: () => ({}) })
+    fetchStub = sinon.stub(global, 'fetch').resolves({ ok: true, json: () => ([userDTO]) })
 
     usersRepository = new UsersRepository()
     usersService = new UsersService({ usersRepository })
@@ -79,6 +80,19 @@ describe('/domain/services/UsersService', () => {
     })
   })
 
+  describe('insertExternalUsers', () => {
+    it('should call fetch function', () => {
+      usersService.insertExternalUsers()
+      expect(fetchStub).to.have.been.calledOnce;
+    })
+
+    it(`should be called with ${EXTERNAL_SERVICE_URL}`, () => {
+      usersService.insertExternalUsers()
+      expect(fetchStub).to.have.been.calledWith(EXTERNAL_SERVICE_URL);
+    })
+
+  })
+
   describe('getAllWithInitialData()', () => {
     it('should call usersRepository.getAll() two times if has one or more users registered on usersRepository.getAll', () => {
       usersRepositoryStubs.getAll.restore()
@@ -102,6 +116,5 @@ describe('/domain/services/UsersService', () => {
       expect(fetchStub).to.have.been.calledOnce;
     })
   })
-
 
 })

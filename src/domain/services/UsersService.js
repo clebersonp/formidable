@@ -1,4 +1,5 @@
 import User from '../entities/User';
+import { EXTERNAL_SERVICE_URL } from './configs';
 
 export default class UsersService {
   constructor({ usersRepository }) {
@@ -30,27 +31,27 @@ export default class UsersService {
     });
   }
 
-  getExternalUsers = () => fetch('https://private-21e8de-rafaellucio.apiary-mock.com/users')
+  insertExternalUsers = () => fetch(EXTERNAL_SERVICE_URL)
     .then((response) => {
       if (response.ok) return response.json();
       return response;
     })
     .then((users) => {
-      const addUsersPromises = users.map(user => this.usersRepository.insert(new User({
+      users.forEach(user => this.usersRepository.insert(new User({
         cpf: user.cpf,
         email: user.email,
         fullName: user.name,
         phone: user.phone,
       })));
-      return Promise.all(addUsersPromises);
+
+      return this.getAll();
     })
-    .then(() => this.getAll());
 
   getAllWithInitialData = () => {
     const hasUsersFromRepository = this.usersRepository.getAll().length > 0;
     if (hasUsersFromRepository) {
       return this.getAll();
     }
-    return this.getExternalUsers();
+    return this.insertExternalUsers();
   };
 }

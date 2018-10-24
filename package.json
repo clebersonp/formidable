@@ -57,6 +57,7 @@
     "mocha": "^5.2.0",
     "node-fetch": "^2.2.0",
     "node-sass": "^4.9.4",
+    "nodemon": "^1.18.4",
     "nyc": "^13.1.0",
     "sass-loader": "^7.1.0",
     "sinon": "^7.0.0",
