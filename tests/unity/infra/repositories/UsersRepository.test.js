@@ -21,7 +21,7 @@ describe('infra/repositories/UsersRepository', () => {
     localStorage.clear()
   })
 
-  describe('should insert() and return the created user', () => {
+  describe('insert()', () => {
     it('should insert an user', () => {
       const createdUser = usersRepository.insert(user)
       const expectedUser = {
