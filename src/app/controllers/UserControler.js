@@ -1,4 +1,5 @@
 import UsersService from '../../domain/services/UsersService';
+import UsersRepository from '../../infra/repositories/UsersRepository';
 import UsersTable from '../components/UsersTable';
 
 export default class UserController {
@@ -17,18 +18,26 @@ export default class UserController {
       email: $form.querySelector('[data-element="inputEmail"]').value,
     };
 
-    UsersService
+    const usersRepository = new UsersRepository();
+    const usersService = new UsersService({ usersRepository });
+
+    usersService
       .addNew(formElementsDTO)
       .then(() => {
-        $form.dispatchEvent(new Event('btnsubmitloaded'));
-        window.location.href = '/';
+        setTimeout(() => {
+          $form.dispatchEvent(new Event('btnsubmitloaded'));
+          window.location.href = '/';
+        }, 2000);
       });
   }
 
   static showAll() {
     const usersTable = new UsersTable(window.document.querySelector('[data-template="UsersTable"]'), UserController);
 
-    UsersService
+    const usersRepository = new UsersRepository();
+    const usersService = new UsersService({ usersRepository });
+
+    usersService
       .getAllWithInitialData()
       .then((users) => {
         usersTable.setState({
@@ -47,9 +56,12 @@ export default class UserController {
       email: user.email,
     };
 
-    UsersService
+    const usersRepository = new UsersRepository();
+    const usersService = new UsersService({ usersRepository });
+
+    usersService
       .deleteUser(removableUserDTO)
-      .then(UsersService.getAll)
+      .then(usersService.getAll)
       .then((users) => {
         usersTable.setState({
           users,

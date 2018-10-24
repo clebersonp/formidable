@@ -1,15 +1,23 @@
 import deepEqual from '../deepEqual';
 
 export default class UsersRepository {
-  key = 'users'
+  key = 'users';
+
+  constructor() {
+    this.getAll = this.getAll.bind(this);
+    this.insert = this.insert.bind(this);
+    this.remove = this.remove.bind(this);
+  }
 
   getItemFromLocalStorage = () => JSON.parse(localStorage.getItem(this.key)) || []
 
   setItemInLocalStorage = item => localStorage.setItem(this.key, JSON.stringify(item))
 
-  getAll = () => this.getItemFromLocalStorage()
+  getAll() {
+    return this.getItemFromLocalStorage();
+  }
 
-  insert = (user) => {
+  insert(user) {
     const listOfUsers = this.getAll();
     let createdUser;
 
@@ -27,7 +35,7 @@ export default class UsersRepository {
     return createdUser;
   }
 
-  remove = (removableUser) => {
+  remove(removableUser) {
     const removableUserDbObj = {
       name: removableUser.getFullName(),
       cpf: removableUser.getCPF(),

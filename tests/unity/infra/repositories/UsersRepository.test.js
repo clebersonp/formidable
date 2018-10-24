@@ -1,9 +1,6 @@
 import { expect } from '../../setup'
 import User from '../../../../src/domain/entities/User';
 import UsersRepository from '../../../../src/infra/repositories/UsersRepository';
-import localStorage from 'localStorage'
-
-global.localStorage = localStorage
 
 const userObj = {
   cpf: '04080757247',

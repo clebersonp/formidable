@@ -1,20 +1,19 @@
-/* eslint no-use-before-define: ["error", { "functions": false }] */
 import User from '../entities/User';
-import UsersRepository from '../../infra/repositories/UsersRepository';
 
-const addNew = (formElementsDTO) => {
-  const user = new User(formElementsDTO);
-  const usersRepository = new UsersRepository();
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(usersRepository.insert(user)), 1000);
-  });
-};
+export default class UsersService {
+  constructor({ usersRepository }) {
+    this.usersRepository = usersRepository;
+  }
 
-const getAll = () => {
-  const usersRepository = new UsersRepository();
+  addNew = (formElementsDTO) => {
+    const user = new User(formElementsDTO);
+    return new Promise((resolve) => {
+      resolve(this.usersRepository.insert(user));
+    });
+  }
 
-  return new Promise((resolve) => {
-    const listOfDomainUsers = usersRepository.getAll().map(user => new User({
+  getAll = () => new Promise((resolve) => {
+    const listOfDomainUsers = this.usersRepository.getAll().map(user => new User({
       cpf: user.cpf,
       email: user.email,
       fullName: user.name,
@@ -22,27 +21,22 @@ const getAll = () => {
     }));
     resolve(listOfDomainUsers);
   });
-};
 
-const getAllWithInitialData = () => {
-  const usersRepository = new UsersRepository();
-  const hasUsersFromRepository = usersRepository.getAll().length > 0;
-
-  if (hasUsersFromRepository) {
-    return getAll();
+  deleteUser = (removableUserDTO) => {
+    const user = new User(removableUserDTO);
+    this.usersRepository.remove(user);
+    return new Promise((resolve) => {
+      resolve({ message: 'removed with success' });
+    });
   }
-  return getExternalUsers();
-};
 
-function getExternalUsers() {
-  const usersRepository = new UsersRepository();
-  return fetch('https://private-21e8de-rafaellucio.apiary-mock.com/users')
+  getExternalUsers = () => fetch('https://private-21e8de-rafaellucio.apiary-mock.com/users')
     .then((response) => {
       if (response.ok) return response.json();
       return response;
     })
     .then((users) => {
-      const addUsersPromises = users.map(user => usersRepository.insert(new User({
+      const addUsersPromises = users.map(user => this.usersRepository.insert(new User({
         cpf: user.cpf,
         email: user.email,
         fullName: user.name,
@@ -50,21 +44,13 @@ function getExternalUsers() {
       })));
       return Promise.all(addUsersPromises);
     })
-    .then(() => getAll());
-}
+    .then(() => this.getAll());
 
-function deleteUser(removableUserDTO) {
-  const usersRepository = new UsersRepository();
-  const user = new User(removableUserDTO);
-  usersRepository.remove(user);
-  return new Promise((resolve) => {
-    resolve({ message: 'removed with success' });
-  });
+  getAllWithInitialData = () => {
+    const hasUsersFromRepository = this.usersRepository.getAll().length > 0;
+    if (hasUsersFromRepository) {
+      return this.getAll();
+    }
+    return this.getExternalUsers();
+  };
 }
-
-export default {
-  addNew,
-  getAll,
-  deleteUser,
-  getAllWithInitialData,
-};
