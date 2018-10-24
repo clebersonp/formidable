@@ -1,110 +1,55 @@
 ![Logo of the project](http://placehold.it/120x120)
 
-# Formidable &middot; [![CircleCI](https://circleci.com/gh/omariosouto/cmail-back/tree/master.svg?style=shield)](https://circleci.com/gh/omariosouto/cmail-back/tree/master)
+# Formidable &middot; [![CircleCI](https://circleci.com/gh/omariosouto/cmail-back/tree/master.svg?style=shield)](https://circleci.com/gh/omariosouto/cmail-back/tree/master) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shield)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=shield)](https://github.com/omariosouto/formidable/blob/master/LICENSE) [![Coverage Status](https://coveralls.io/repos/github/omariosouto/formidable/badge.svg?branch=master)](https://coveralls.io/github/omariosouto/formidable?branch=master)
 
+> Additional information or tag line
 
-<!-- [![Build Status](https://img.shields.io/travis/npm/npm/latest.svg?style=flat-square)](https://travis-ci.org/npm/npm) [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/npm) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE) -->
-
-<!-- > Additional information or tag line
-
-A brief description of your project, what it is used for.
-
-## Installing / Getting started
-
-A quick introduction of the minimal setup you need to get a hello world up &
-running.
-
-```shell
-commands here
-```
-
-Here you should say what actually happens when you execute the code above.
+This project is just a test of an implementation of DDD concepts for Front End development.
 
 ## Developing
 
-### Built With
-List main libraries, frameworks used including versions (React, Angular etc...)
-
-### Prerequisites
-What is needed to set up the dev environment. For instance, global dependencies or any other tools. include download links.
-
-
 ### Setting up Dev
 
-Here's a brief intro about what a developer must do in order to start developing
-the project further:
+If you want to run project and develop new features just type: 
 
 ```shell
-git clone https://github.com/your/your-project.git
-cd your-project/
-packagemanager install
+git clone https://github.com/omariosouto/formidable.git
+cd formidable/
+npm install && npm run dev
 ```
 
-And state what happens step-by-step. If there is any virtual environment, local server or database feeder needed, explain here.
+After it the project will open in a new tab on your favorite browser :)
 
-### Building
+### Prerequisites
 
-If your project needs some additional steps for the developer to build the
-project after some code changes, state them here. for example:
+To run this project you need to install:
 
-```shell
-./configure
-make
-make install
-```
-
-Here again you should state what actually happens when the code above gets
-executed.
-
-### Deploying / Publishing
-give instructions on how to build and release a new version
-In case there's some step you have to take that publishes this project to a
-server, this is the right time to state it.
-
-```shell
-packagemanager deploy your-project -s server.com -u username -p password
-```
-
-And again you'd need to tell what the previous code actually does.
-
-## Versioning
-
-We can maybe use [SemVer](http://semver.org/) for versioning. For the versions available, see the [link to tags on this repository](/tags).
-
+- [Node JS](https://nodejs.org/en/download/)
 
 ## Configuration
 
-Here you should write what are all of the configurations a user can enter when
-using the project.
+This project has setup for:
+
+- **Circle CI Contiunous Intergation**: Just make an commit to master branch :);
+- **Coveralls**: Just run `npm run test:coveralls`;
+- **Code linter with an styleguide**: To check the style of your code just run: `npm run lint`;
+- **Git hooks for better commits**: Aways when you try to commit a git hook run the linter process;
+- **Development server**: This project has a development server with BrowserSync and you can start it running `npm run dev`;
+- **Babel**: This project support the most recent updates of javascript, if you want to improve babel features just change .babelrc and install new features;
 
 ## Tests
 
-Describe and show how to run the tests with code examples.
-Explain what these tests test and why.
+If want to write tests in this project, place all your test files in `./tests/` directory.
 
-```shell
-Give an example
-```
+### Tools
+- [Chai](https://github.com/chaijs/chai)
+- [Mocha](https://github.com/mochajs/mocha)
 
 ## Style guide
 
-Explain your code style and show how to check it.
+This project uses [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).
 
-## Api Reference
-
-If the api is external, link to api documentation. If not describe your api including authentication methods as well as explaining all the endpoints with their required parameters.
-
-
-## Database
-
-Explaining what database (and version) has been used. Provide download links.
-Documents your database design and schemas, relations etc...
 
 ## Licensing
 
-State what the license is and how to find the text version of the license.
-
- -->
-
-
-<!-- [![Coverage Status](https://coveralls.io/repos/github/omariosouto/formidable/badge.svg?branch=master)](https://coveralls.io/github/omariosouto/formidable?branch=master) -->
+[MIT License](https://github.com/omariosouto/formidable/blob/master/LICENSE.md) © [Mario Souto](https://mariosouto.com/).
