@@ -9,7 +9,7 @@
     "test:coveralls": "npm run test:coverage && nyc report --reporter=text-lcov | coveralls",
     "dev": "cross-env NODE_ENV=development webpack --config ./devtools/webpack/webpack.config.js --colors --progress  --mode='development'",
     "build": "echo 'You must to create an build command'",
-    "start": "echo 'You must to create an start command'",
+    "start": "http-server ./dist -c -1",
     "lint": "eslint ./src --ext .js"
   },
   "husky": {
@@ -63,10 +63,11 @@
     "sinon": "^7.0.0",
     "webpack": "^4.21.0",
     "webpack-cli": "^3.1.2",
-    "webpack-dashboard": "^2.0.0"
-  },
-  "dependencies": {
+    "webpack-dashboard": "^2.0.0",
     "localStorage": "^1.0.4",
     "sinon-chai": "^3.2.0"
+  },
+  "dependencies": {
+    "http-server": "^0.11.1"
   }
 }
