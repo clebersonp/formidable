@@ -1,16 +1,15 @@
-![Logo of the project](http://placehold.it/120x120)
-
 # Formidable &middot; [![CircleCI](https://circleci.com/gh/omariosouto/cmail-back/tree/master.svg?style=shield)](https://circleci.com/gh/omariosouto/cmail-back/tree/master) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shield)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=shield)](https://github.com/omariosouto/formidable/blob/master/LICENSE) [![Coverage Status](https://coveralls.io/repos/github/omariosouto/formidable/badge.svg?branch=master)](https://coveralls.io/github/omariosouto/formidable?branch=master)
 
-> Additional information or tag line
+> This project is just a test of an implementation of DDD concepts for Front End development.
 
-This project is just a test of an implementation of DDD concepts for Front End development.
+## About the project
+- [PT-BR](https://github.com/omariosouto/formidable/blob/master/docs/objetivo.md)
 
 ## Developing
 
 ### Setting up Dev
 
-If you want to run project and develop new features just type: 
+If you want to run project and develop new features just type:
 
 ```shell
 git clone https://github.com/omariosouto/formidable.git
@@ -28,7 +27,7 @@ To run this project you need to install:
 
 ## Configuration
 
-This project has setup for:
+This project ready to play has setup for:
 
 - **Circle CI Contiunous Intergation**: Just make an commit to master branch :);
 - **Coveralls**: Just run `npm run test:coveralls`;
@@ -44,6 +43,7 @@ If want to write tests in this project, place all your test files in `./tests/` 
 ### Tools
 - [Chai](https://github.com/chaijs/chai)
 - [Mocha](https://github.com/mochajs/mocha)
+- [Sinon](https://www.npmjs.com/package/sinon)
 
 ## Style guide
 
@@ -52,4 +52,4 @@ This project uses [Airbnb JavaScript Style Guide](https://github.com/airbnb/java
 
 ## Licensing
 
-[MIT License](https://github.com/omariosouto/formidable/blob/master/LICENSE.md) © [Mario Souto](https://mariosouto.com/).
+[MIT License](https://github.com/omariosouto/formidable/blob/master/LICENSE) © [Mario Souto](https://mariosouto.com/).
