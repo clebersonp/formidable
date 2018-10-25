@@ -8,15 +8,25 @@ function startBtnSubmitLoading() {
   $formElement.querySelector('[data-element="btnSubmit"]').setAttribute('disabled', 'true');
 }
 
-function stopBtnSubmitLoading() {
+function stopBtnSubmitStopLoading() {
   $formElement.querySelector('[data-element="btnSubmit"]').classList.remove('-loading');
   $formElement.querySelector('[data-element="btnSubmit"]').removeAttribute('disabled');
+}
+
+function stopBtnSubmitLoaded() {
+  $formElement.updateFormError();
+  $formElement.dispatchEvent(new Event('stoploading'));
   $formElement.reset();
 }
 
 $formElement.addEventListener('btnsubmitloading', startBtnSubmitLoading);
-$formElement.addEventListener('btnsubmitloaded', stopBtnSubmitLoading);
+$formElement.addEventListener('stoploading', stopBtnSubmitStopLoading);
 
+$formElement.addEventListener('btnsubmitloaded', stopBtnSubmitLoaded);
+
+$formElement.updateFormError = (message = '') => {
+  $formElement.querySelector('[data-element="formError"]').innerHTML = message;
+};
 
 export default {
   element: $formElement,

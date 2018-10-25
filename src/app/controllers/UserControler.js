@@ -21,14 +21,19 @@ export default class UserController {
     const usersRepository = new UsersRepository();
     const usersService = new UsersService({ usersRepository });
 
-    usersService
-      .addNew(formElementsDTO)
-      .then(() => {
-        setTimeout(() => {
+    setTimeout(() => {
+      usersService
+        .addNew(formElementsDTO)
+        .then(() => {
           $form.dispatchEvent(new Event('btnsubmitloaded'));
           window.location.href = '/';
-        }, 2000);
-      });
+        })
+        .catch((err) => {
+          /* eslint no-alert: "error" */
+          if (err.message === 'User already exists') $form.updateFormError('Usuário já existe :(');
+          $form.dispatchEvent(new Event('stoploading'));
+        });
+    }, 2000);
   }
 
   static showAll() {

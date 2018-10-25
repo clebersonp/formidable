@@ -29,15 +29,20 @@ describe('infra/repositories/UsersRepository', () => {
       }
       expect(createdUser).to.be.deep.equals(expectedUser)
     })
-  })
-  describe('getAll()', () => {
-    it('should return a list of 3 users', () => {
+    it('should not insert an that is equal another user and must to return an new Error', () => {
       usersRepository.insert(user)
-      usersRepository.insert(user)
-      usersRepository.insert(user)
-      expect(usersRepository.getAll().length).to.be.equal(3)
+      const duplicatedUser = usersRepository.insert(user)
+      expect(duplicatedUser).to.be.instanceof(Error)
     })
   })
+  // describe('getAll()', () => {
+  //   it('should return a list of 3 users', () => {
+  //     usersRepository.insert(user)
+  //     usersRepository.insert(user)
+  //     usersRepository.insert(user)
+  //     expect(usersRepository.getAll().length).to.be.equal(3)
+  //   })
+  // })
   describe('remove()', () => {
     it('should remove a user', () => {
       usersRepository.insert(user)

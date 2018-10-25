@@ -8,8 +8,11 @@ export default class UsersService {
 
   addNew = (formElementsDTO) => {
     const user = new User(formElementsDTO);
-    return new Promise((resolve) => {
-      resolve(this.usersRepository.insert(user));
+    return new Promise((resolve, reject) => {
+      const insertUserResult = this.usersRepository.insert(user);
+      if (insertUserResult instanceof Error) reject(insertUserResult);
+
+      resolve(insertUserResult);
     });
   }
 

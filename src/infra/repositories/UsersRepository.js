@@ -28,6 +28,13 @@ export default class UsersRepository {
         phone: user.getPhone(),
         email: user.getEmail(),
       };
+
+      for (let i = 0; i < listOfUsers.length; i += 1) {
+        if (deepEqual(listOfUsers[i], createdUser)) {
+          return new Error('User already exists');
+        }
+      }
+
       listOfUsers.push(createdUser);
     }
 

@@ -4,4 +4,11 @@
     margin: 0 auto;
     display: block;
   }
+
+  & > .error {
+    color: $invalid;
+    padding: 15px;
+    display: block;
+    text-align: center;
+  }
 }
