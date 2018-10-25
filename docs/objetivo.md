@@ -10,7 +10,7 @@ Espero que o projeto possa servir de exemplo para quem tiver curiosidade de ver 
 
 ## Recursos que envolvem qualidade de código
 
-- Testes: Servem como uma documentação viva do projeto, ajuda a dar mais segurança em refatorações e a quebra em vários casos nos obriga a escrever um código que possua um baixo acoplamento. E seguindo um fluxo de desenvolvimento como o TDD pode ajudar a melhorar até a legibilidade do código escrito.
+- Testes: Servem como uma documentação viva do projeto, ajuda a dar mais segurança em refatorações e a quebra em vários casos nos obriga a escrever um código que possua um baixo acoplamento.
   - Ferramentas utilizadas: [Asserções(Chai)](http://chaijs.com/), [Mocks e Stubs(Sinon)](https://sinonjs.org/), [Framework de Testes (Mocha)](https://mochajs.org).
 - Linter: Ajuda a ter um código mais padronizado entre o time, evita discussões desnecessárias como por exemplo "acho que todo array criado deveria ter ou não comma-dangle" e nos ajuda a entregar mais sem ter que ficar se preocupando em lembrar diversas regras
   - Ferramentas utilizadas: [ESLint](https://eslint.org/), [Airbnb JavaScript Styleguide](https://github.com/airbnb/javascript)
